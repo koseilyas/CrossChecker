@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Board :MonoBehaviour
 {
     public Tile[,] tiles ;
     [SerializeField] private Tile _tilePrefab;
-    [SerializeField]private int _size ;
+    [SerializeField] private int _size ;
     private BoardBuilder _boardBuilder;
     private MatchFinder _matchFinder;
 

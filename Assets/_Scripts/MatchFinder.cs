@@ -19,6 +19,12 @@ public class MatchFinder : MonoBehaviour
         Tile.OnTileClicked -= TileClicked;    
     }
     
+    /// <summary>
+    /// RecursiveSearch           -> Searches neighbour tiles on clicked tile recursively and updates _searchingTiles collection.
+    /// ClearTileFlagsAfterSearch -> Removes visited flag on tiles. So we can start over on next searches
+    /// CheckForScoreCondition    -> Checks if we hit enough neighbours. If so updates score
+    /// Lastly clear collection. So we can start over on next searches
+    /// </summary>
     private void TileClicked(Tile tile)
     {
         RecursiveSearch(tile);

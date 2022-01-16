@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoardBuilder : MonoBehaviour
@@ -19,14 +18,6 @@ public class BoardBuilder : MonoBehaviour
         CalculateAndSetPosition();
     }
 
-    public void RemoveTiles()
-    {
-        foreach (var tile in _board.tiles)
-        {
-            Destroy(tile.gameObject);
-        }
-    }
-
     private void CreateBoard()
     {
         Vector3 tilePosition = new Vector3();
@@ -43,7 +34,9 @@ public class BoardBuilder : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// Links neighbour tiles together. So we can iterate over tiles easily. 
+    /// </summary>
     private void SetTileRelations()
     {
         for (int i = 0; i < _size; i++)
@@ -65,8 +58,7 @@ public class BoardBuilder : MonoBehaviour
             }
         }
     }
-
-
+    
     private void CalculateAndSetPosition()
     {
         _camera.orthographicSize = _size;
@@ -74,5 +66,13 @@ public class BoardBuilder : MonoBehaviour
         upperCenterPosition = new Vector3(upperCenterPosition.x, upperCenterPosition.y - (_size / 2.5f), 0);
         Vector3 currentPosition = transform.position;
         transform.position = new Vector3(currentPosition.x - upperCenterPosition.x, currentPosition.y - upperCenterPosition.y, 0);
+    }
+    
+    public void RemoveTiles()
+    {
+        foreach (var tile in _board.tiles)
+        {
+            Destroy(tile.gameObject);
+        }
     }
 }
