@@ -1,10 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+    public Tile leftNeighbour, rightNeighbour, upNeighbour, downNeighbour;
     [SerializeField] private GameObject _cross;
     private bool _isChecked;
+    
     public static event Action<Tile> OnTileClicked; 
     public bool isChecked
     {
@@ -21,5 +24,6 @@ public class Tile : MonoBehaviour
         isChecked = !_isChecked;
         if(isChecked)
             OnTileClicked?.Invoke(this);
+
     }
 }
