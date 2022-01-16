@@ -19,6 +19,14 @@ public class BoardBuilder : MonoBehaviour
         CalculateAndSetPosition();
     }
 
+    public void RemoveTiles()
+    {
+        foreach (var tile in _board.tiles)
+        {
+            Destroy(tile);
+        }
+    }
+
     private void CreateBoard()
     {
         Vector3 tilePosition = new Vector3();

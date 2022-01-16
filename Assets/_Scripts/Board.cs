@@ -7,11 +7,22 @@ public class Board :MonoBehaviour
     [SerializeField] private Tile _tilePrefab;
     [SerializeField]private int _size ;
     private BoardBuilder _boardBuilder;
+    private MatchFinder _matchFinder;
 
-    private void Start()
+    public void Initialize()
     {
         tiles = new Tile[_size, _size];
         _boardBuilder = gameObject.AddComponent<BoardBuilder>();
+        _matchFinder = gameObject.AddComponent<MatchFinder>();
         _boardBuilder.Initialize(this,_tilePrefab,_size);
+    }
+
+    public void Restart(int size)
+    {
+        _size = size;
+        tiles = new Tile[_size, _size];
+        _boardBuilder.RemoveTiles();
+        _boardBuilder.Initialize(this,_tilePrefab,_size);
+        _matchFinder.ResetScore();
     }
 }

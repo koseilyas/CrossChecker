@@ -179,6 +179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c65b2c00b61436aabfc5ddc2c378b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftNeighbour: {fileID: 0}
+  rightNeighbour: {fileID: 0}
+  upNeighbour: {fileID: 0}
+  downNeighbour: {fileID: 0}
+  isVisited: 0
   _cross: {fileID: 3047060711680750055}
 --- !u!61 &5350893420464299556
 BoxCollider2D:
