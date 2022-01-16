@@ -5,7 +5,8 @@ using UnityEngine;
 public class MatchFinder : MonoBehaviour
 {
     private HashSet<Tile> _searchingTiles = new HashSet<Tile>();
-    private float _score;
+    private int _score;
+    private int _scoreCondition = 3;
     public static event Action<int> OnScore;
 
     private void OnEnable()
@@ -37,9 +38,10 @@ public class MatchFinder : MonoBehaviour
     
     private void CheckForScoreCondition()
     {
-        if (_searchingTiles.Count >= 3)
+        if (_searchingTiles.Count >= _scoreCondition)
         {
             _score++;
+            OnScore?.Invoke(_score);
             foreach (var t in _searchingTiles)
             {
                 t.isChecked = false;
@@ -66,8 +68,9 @@ public class MatchFinder : MonoBehaviour
             RecursiveSearch(down);
     }
 
-    public void ResetScore()
+    public void ResetScore(int scoreCondition)
     {
+        _scoreCondition = scoreCondition;
         _score = 0;
     }
 }

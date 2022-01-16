@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
         UIManager.OnRebuild -= Rebuild;
     }
 
-    private void Rebuild(int size)
+    private void Rebuild(int size,int scoreCondition)
     {
-        _board.Restart(size);
+        _board.Restart(size,scoreCondition);
     }
 }

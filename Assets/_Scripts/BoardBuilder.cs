@@ -23,7 +23,7 @@ public class BoardBuilder : MonoBehaviour
     {
         foreach (var tile in _board.tiles)
         {
-            Destroy(tile);
+            Destroy(tile.gameObject);
         }
     }
 
